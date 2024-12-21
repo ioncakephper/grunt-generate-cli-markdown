@@ -9,3 +9,4 @@
 
 ### Changed
 - test command in package: use Jest --passWithNoTests
+- Update README

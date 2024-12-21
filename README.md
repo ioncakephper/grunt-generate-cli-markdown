@@ -17,99 +17,91 @@
 
 ---
 
-<p align="center"> Few lines describing your project.
-    <br> 
+<p align="center"> Generates Markdown documentation for a CLI.  This Grunt plugin helps automate the creation of markdown documentation based on how your CLI tool.
+    <br>
 </p>
 
-## 📝 Table of Contents
+## 📝 Table of Contents <!-- omit in toc -->
 
-- [About](#about)
-- [Getting Started](#getting_started)
-- [Deployment](#deployment)
-- [Usage](#usage)
-- [Built Using](#built_using)
-- [TODO](../TODO.md)
-- [Contributing](../CONTRIBUTING.md)
-- [Authors](#authors)
-- [Acknowledgments](#acknowledgement)
+- [🏁 Getting Started](#-getting-started)
+- [🎈 Usage](#-usage)
+- [Options](#options)
+- [⛏️ Built Using](#️-built-using)
+- [🤝 Contributing](#-contributing)
+- [💖 Show your support](#-show-your-support)
+- [✍️ Authors](#️-authors)
+- [📝 License](#-license)
 
-## 🧐 About <a name = "about"></a>
+## 🏁 Getting Started
 
-Write about 1-2 paragraphs describing the purpose of your project.
+This plugin requires Grunt `^1.6.1`
 
-## 🏁 Getting Started <a name = "getting_started"></a>
+1. **Install the plugin:**
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
-
-### Prerequisites
-
-What things you need to install the software and how to install them.
-
-```
-Give examples
+```bash
+npm install grunt-generate-cli-markdown --save-dev
 ```
 
-### Installing
+2. **Load the plugin:** Add this line to your Gruntfile.js file:
 
-A step by step series of examples that tell you how to get a development env running.
-
-Say what the step will be
-
-```
-Give the example
+```js
+grunt.loadNpmTasks('grunt-generate-cli-markdown');
 ```
 
-And repeat
+3. **Configure the plugin:** Add the following configuration to your Gruntfile.js file:
 
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo.
-
-## 🔧 Running the tests <a name = "tests"></a>
-
-Explain how to run the automated tests for this system.
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
+```js
+  generate-cli-markdown: {
+    your_target: { // Arbitrary target name
+      options: {
+        // Add plugin-specific options here. Examples:
+        cliPath: 'path/to/your/cli', // Path to your CLI executable
+        // other options as needed.
+      },
+      files: {
+        'DESTINATION_README.md': 'SOURCE.md'  // Specify source and destination files
+      }
+    },
+  },
 ```
 
-### And coding style tests
+## 🎈 Usage
 
-Explain what these tests test and why
-
+```js
+generate-cli-markdown: {
+  myTarget: { 
+   options: {
+     cliPath: './bin/mycli',
+       // ... other options
+   },
+   files: {
+     'docs/README.md': 'templates/README.md'
+   }
+ }
+}
 ```
-Give an example
-```
 
-## 🎈 Usage <a name="usage"></a>
+## Options
 
-Add notes about how to use the system.
+- `cliPath` **(required)**: The path to the executable file of your CLI tool. (Type: String)
 
-## 🚀 Deployment <a name = "deployment"></a>
+## ⛏️ Built Using
 
-Add additional notes about how to deploy this on a live system.
+- Node.js
+- Grunt
 
-## ⛏️ Built Using <a name = "built_using"></a>
+## 🤝 Contributing
 
-- [MongoDB](https://www.mongodb.com/) - Database
-- [Express](https://expressjs.com/) - Server Framework
-- [VueJs](https://vuejs.org/) - Web Framework
-- [NodeJs](https://nodejs.org/en/) - Server Environment
+Contributions, issues, and feature requests are welcome! Feel free to check issues page.
 
-## ✍️ Authors <a name = "authors"></a>
+## 💖 Show your support
+
+Give a ⭐️ if this project helped you!
+
+## ✍️ Authors
 
 - [@ioncakephper](https://github.com/ioncakephper) - Idea & Initial work
 
-See also the list of [contributors](https://github.com/kylelobo/The-Documentation-Compendium/contributors) who participated in this project.
+## 📝 License
 
-## 🎉 Acknowledgements <a name = "acknowledgement"></a>
-
-- Hat tip to anyone whose code was used
-- Inspiration
-- References
+Copyright © 2024 ioncakephper. This project is [MIT licensed](LICENSE).
