@@ -8,8 +8,8 @@
 <div align="center">
 
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
-[![GitHub Issues](https://img.shields.io/github/issues/ioncakephper/generate-cli-markdown.svg)](https://github.com/ioncakephper/generate-cli-markdown/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/ioncakephper/generate-cli-markdown.svg)](https://github.com/ioncakephper/generate-cli-markdown/pulls)
+[![GitHub Issues](https://img.shields.io/github/issues/ioncakephper/grunt-generate-cli-markdown.svg)](https://github.com/ioncakephper/grunt-generate-cli-markdown/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/ioncakephper/grunt-generate-cli-markdown.svg)](https://github.com/ioncakephper/grunt-generate-cli-markdown/pulls)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 [![Node.js CI](https://github.com/ioncakephper/grunt-generate-cli-markdown/actions/workflows/node.js.yml/badge.svg)](https://github.com/ioncakephper/grunt-generate-cli-markdown/actions/workflows/node.js.yml)
 
