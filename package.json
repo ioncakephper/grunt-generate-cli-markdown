@@ -5,7 +5,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Ion Gireada",
+  "author": "ioncakephper",
   "license": "MIT",
-  "description": ""
+  "description": "Generates Markdown documentation for a CLI",
+  "dependencies": {
+    "child-process": "^1.0.2",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "grunt": "^1.6.1"
+  }
 }
