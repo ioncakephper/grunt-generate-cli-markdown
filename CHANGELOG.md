@@ -9,3 +9,5 @@
 
 ### Changed
 - test command in package: use Jest --passWithNoTests
+- Update README
+- updated the package.json keywords

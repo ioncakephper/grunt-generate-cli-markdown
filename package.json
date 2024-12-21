@@ -9,6 +9,21 @@
     "name": "ioncakephper",
     "url": "https://github.com/ioncakephper"
   },
+  "keywords": [
+  "grunt",
+  "grunt-plugin",
+  "cli",
+  "command-line",
+  "documentation",
+  "markdown",
+  "readme",
+  "generator",
+  "automate",
+  "automation",
+  "docs",
+  "help",
+  "usage"
+],
   "repository": {
     "type": "git",
     "url": "https://github.com/ioncakephper/grunt-generate-cli-markdown.git"
