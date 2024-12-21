@@ -1,0 +1,11 @@
+{
+  "name": "grunt-generate-cli-markdown",
+  "version": "1.0.0",
+  "main": "tasks/generate-cli-markdown.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ion Gireada",
+  "license": "MIT",
+  "description": ""
+}
