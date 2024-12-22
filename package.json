@@ -6,7 +6,7 @@
     "test": "jest --passWithNoTests"
   },
   "author": {
-    "name": "ioncakephper",
+    "name": "Ion Gireada",
     "url": "https://github.com/ioncakephper"
   },
   "keywords": [
@@ -27,6 +27,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ioncakephper/grunt-generate-cli-markdown.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ioncakephper/grunt-generate-cli-markdown/issues"
   },
   "license": "MIT",
   "description": "Generates Markdown documentation for a CLI",
