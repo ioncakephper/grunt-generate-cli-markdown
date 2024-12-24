@@ -35,14 +35,10 @@
   "description": "Generates Markdown documentation for a CLI",
   "dependencies": {
     "child-process": "^1.0.2",
-    "commander": "^12.1.0",
     "fs": "^0.0.1-security",
     "path": "^0.12.7"
   },
   "devDependencies": {
-    "grunt": "^1.6.1",
-    "grunt-generate-cli-markdown": "^1.0.3",
-    "grunt-insert-file-tag": "^0.1.0",
     "jest": "^29.7.0"
   }
 }
