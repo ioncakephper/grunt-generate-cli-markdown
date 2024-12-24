@@ -27,6 +27,10 @@
 - [🎈 Usage](#-usage)
 - [:gear: Options](#gear-options)
 - [:exclamation: Example](#exclamation-example)
+- [Commands](#commands)
+  - [`check|c` command](#checkc-command)
+  - [`build|b` command](#buildb-command)
+  - [`help` command](#help-command)
 - [⛏️ Built Using](#️-built-using)
 - [🤝 Contributing](#-contributing)
 - [💖 Show your support](#-show-your-support)
@@ -96,60 +100,57 @@ Create a file named `src/index.js` (or any name you like, making sure to update 
 
 ```javascript
 #!/usr/bin/env node
+
+"use strict";
 const { program } = require('commander');
 
 program
-  .version('1.0.0')
-  .option('-v, --verbose', 'Enable verbose output')
-  .configureHelp({
-    sortCommands: true,
-    sortOptions: true,
-    showGlobalOptions: true
-  });
+    .version('1.0.0')
+    .option('-v, --verbose', 'Enable verbose output')
+    .configureHelp({
+        sortCommands: true,
+        sortOptions: true,
+        showGlobalOptions: true
+    });
 
 
 program
-  .command('check', { hidden: false })
-  .alias('c')
-  .description('Check the project')
-  .action(() => {
-    console.log('Checking the project...');
-  });
+    .command('check')
+    .alias('c')
+    .description('Check the project')
+    .action(() => {
+        console.log('Checking the project...');
+    });
 
 program
-  .command('build', { hidden: false })
-  .alias('b')
-  .description('Build the project')
-  .action(() => {
-    console.log('Building the project...');
-  });
+    .command('build')
+    .alias('b')
+    .description('Build the project')
+    .option('-p, --production', 'Build for production')
+    .option('-s, --sidebarsFilename <filename>', 'Specify the sidebars filename', 'sidebars.js')
+    .option('-d, docs <docs>', 'Specify the docs directory', 'docs')
+    .option('--config <filename>', 'Specify the config file', 'app.config.js')
+    .argument('<source>', 'Source directory')
+    .argument('[destination]', 'Destination directory', 'dist')
+    .action((source, destination, options) => {
+        console.log('Building the project...');
+        console.log('Source:', source);
+        console.log('Destination:', destination);
+        console.log('Options:', options);
+    });
 
 program.parse();
-
 ```
 
 **2. Create a Gruntfile.js:**
 
 Create a file named `Gruntfile.js` with the following content:
 
-```javascript
-module.exports = function(grunt) {
-  grunt.initConfig({
-    generate-cli-markdown: {
-      myTarget: {
-        options: {
-          cliPath: './src/index.js', // Path to your CLI
-        },
-        files: {
-          'docs/README.md': 'templates/README.md' // Source and destination for the markdown
-        }
-      }
-    }
-  })
-
-  grunt.loadNpmTasks('grunt-generate-cli-markdown');
- 
-}
+  ```javascript
+  module.exports = function(grunt) {
+    grunt.loadNpmTasks('grunt-generate-cli-markdown');
+  
+  };
 ```
 
 **3. Install dependencies:**
@@ -178,14 +179,239 @@ npm install -g grunt-cli
 grunt generate-cli-markdown
 ```
 
-This will generate a markdown file (`docs/README.md` in this example) containing the documentation for your CLI, including the commands, their descriptions, aliases, and the global verbose option. The generated markdown will also reflect the custom help configuration using `sortCommands`, `sortOptions`, and `showGlobalOptions`.
+```bash shell
+Running "generate-cli-markdown" task
+>> Markdown documentation generated: ./src/index.js.md
+
+Done.
+```
+
+This will generate a markdown file (`src/index.js.md` in this example) containing the documentation for your CLI, including the commands, their descriptions, aliases, and the global verbose option. The generated markdown will also reflect the custom help configuration using `sortCommands`, `sortOptions`, and `showGlobalOptions`.
 
 By modifying the `src/index.js` file (adding, removing, or changing commands, options, descriptions, etc.), and re-running the grunt `generate-cli-markdown` task, the generated markdown documentation will automatically update to reflect the changes in your CLI's source code. For instance, adding a new command with its description and options in `src/index.js` will result in this new command's documentation appearing in the generated markdown after running the Grunt task.
 
-**6. Exammine the generated markdown:**
+**6. Examine the generated markdown:**
 
 ```markdown
-# My CLI Tool
+<!-- ::insert file="src/index.js.md" -->
+<!-- Inserted on: 2024-12-24T09:46:39.041Z -->
+Options:
+
+**Example Usage:**
+
+```bash
+node ./src/index.js [command] [options]
+```
+
+**Version:**
+
+```bash
+node ./src/index.js -V # or --version
+```
+
+```txt
+1.0.0
+```
+
+**Help:**
+
+```bash
+node ./src/index.js -h # or --help
+```
+
+```txt
+Usage: index [options] [command]
+
+Options:
+  -h, --help                                display help for command
+  -v, --verbose                             Enable verbose output
+  -V, --version                             output the version number
+
+Commands:
+  check|c                                   Check the project
+  build|b [options] <source> [destination]  Build the project
+  help [command]                            display help for command
+
+```
+
+**Options:**
+
+| Option | Description |
+|---|---|
+| `-h, --help`  | display help for command |
+| `-v, --verbose`  | Enable verbose output |
+| `-V, --version`  | output the version number |
+
+## Commands
+
+- [`check|c` command](#check|c-command)
+- [`build|b` command](#build|b-command)
+- [`help` command](#help-command)
+
+### `check|c` command
+
+Check the project
+
+**Example Usage:**
+
+```bash
+node ./src/index.js check [options]
+```
+
+**Version:**
+
+```bash
+node ./src/index.js check -V # or --version
+```
+
+```txt
+1.0.0
+```
+
+**Help:**
+
+```bash
+node ./src/index.js check -h # or --help
+```
+
+```txt
+Usage: index check|c [options]
+
+Check the project
+
+Options:
+  -h, --help     display help for command
+
+Global Options:
+  -v, --verbose  Enable verbose output
+  -V, --version  output the version number
+
+```
+
+**Options:**
+
+| Option | Description |
+|---|---|
+| `-h, --help`  | display help for command |
+
+### `build|b` command
+
+Build the project
+
+**Example Usage:**
+
+```bash
+node ./src/index.js build [arguments] [options]
+```
+
+**Version:**
+
+```bash
+node ./src/index.js build -V # or --version
+```
+
+```txt
+1.0.0
+```
+
+**Help:**
+
+```bash
+node ./src/index.js build -h # or --help
+```
+
+```txt
+Usage: index build|b [options] <source> [destination]
+
+Build the project
+
+Arguments:
+  source                             Source directory
+  destination                        Destination directory (default: "dist")
+
+Options:
+  --config <filename>                Specify the config file (default:
+                                     "app.config.js")
+  -d, docs <docs>                    Specify the docs directory (default:
+                                     "docs")
+  -h, --help                         display help for command
+  -p, --production                   Build for production
+  -s, --sidebarsFilename <filename>  Specify the sidebars filename (default:
+                                     "sidebars.js")
+
+Global Options:
+  -v, --verbose                      Enable verbose output
+  -V, --version                      output the version number
+
+```
+
+**Arguments:**
+
+| Argument | Description | Default |
+|---|---|---|
+| `source` | Source directory |  |
+| `destination` | Destination directory | "dist" |
+
+**Options:**
+
+| Option | Description |
+|---|---|
+| `--config`  | Specify the config file (default: |
+| `-h, --help`  | display help for command |
+| `-p, --production`  | Build for production |
+| `-s, --sidebarsFilename`  | Specify the sidebars filename (default: |
+
+### `help` command
+
+Options:
+
+**Example Usage:**
+
+```bash
+node ./src/index.js help [command] [options]
+```
+
+**Version:**
+
+```bash
+node ./src/index.js help -V # or --version
+```
+
+```txt
+1.0.0
+```
+
+**Help:**
+
+```bash
+node ./src/index.js help -h # or --help
+```
+
+```txt
+Usage: index [options] [command]
+
+Options:
+  -h, --help                                display help for command
+  -v, --verbose                             Enable verbose output
+  -V, --version                             output the version number
+
+Commands:
+  check|c                                   Check the project
+  build|b [options] <source> [destination]  Build the project
+  help [command]                            display help for command
+
+```
+
+**Options:**
+
+| Option | Description |
+|---|---|
+| `-h, --help`  | display help for command |
+| `-v, --verbose`  | Enable verbose output |
+| `-V, --version`  | output the version number |
+
+
+<!-- :/insert -->
 
 ```
 
@@ -195,7 +421,7 @@ Update the CLI source file to include more commands, options, and aliases. Rerun
 
 ```javascript
 program
-  .command('check', { hidden: false })
+  .command('check')
   .alias('c')
   .description('Check the project')
   .action(() => {
@@ -246,3 +472,5 @@ Give a ⭐️ if this project helped you!
 ## 📝 License
 
 Copyright © 2024 [Ion Gireada](https://github.com/ioncakephper). This project is [MIT licensed](LICENSE).
+
+
