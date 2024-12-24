@@ -175,7 +175,7 @@ npm install -g grunt-cli
 **5. Run the Grunt task:** 
 
 ```bash shell
-grunt
+grunt generate-cli-markdown
 ```
 
 This will generate a markdown file (`docs/README.md` in this example) containing the documentation for your CLI, including the commands, their descriptions, aliases, and the global verbose option. The generated markdown will also reflect the custom help configuration using `sortCommands`, `sortOptions`, and `showGlobalOptions`.
