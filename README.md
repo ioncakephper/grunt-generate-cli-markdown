@@ -224,7 +224,7 @@ program.parse();
 ```bash shell
 grunt generate-cli-markdown
 ```
-```
+
 
 ## ⛏️ Built Using
 
@@ -245,4 +245,4 @@ Give a ⭐️ if this project helped you!
 
 ## 📝 License
 
-Copyright © 2024 ioncakephper. This project is [MIT licensed](LICENSE).
+Copyright © 2024 [Ion Gireada](https://github.com/ioncakephper). This project is [MIT licensed](LICENSE).
